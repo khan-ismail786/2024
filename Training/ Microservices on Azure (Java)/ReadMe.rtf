@@ -1,0 +1,222 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2821
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 HelveticaNeue;\f2\froman\fcharset0 Times-Bold;
+\f3\froman\fcharset0 Times-Roman;\f4\froman\fcharset0 TimesNewRomanPSMT;\f5\froman\fcharset0 Times-Italic;
+\f6\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue233;\red146\green36\blue103;\red187\green202\blue226;
+\red44\green103\blue104;\red0\green0\blue0;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c93333;\cssrgb\c64706\c22353\c47843;\cssrgb\c78039\c83137\c90980;
+\cssrgb\c21569\c47451\c48235;\cssrgb\c0\c0\c0;\csgray\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 Https://digitallabs.palmeto.co.in\
+Optum-Azure20\
+P@lmeto@123\
+\
+user20@sbtalkhotmail.onmicrosoft.com\
+Micro@8559\
+\
+\pard\pardeftab720\sa280\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://github.com/sbtalk71/optum-azure-ms.git"}}{\fldrslt 
+\f1\fs28 \cf2 \expnd0\expndtw0\kerning0
+\ul \ulc2 https://github.com/sbtalk71/optum-azure-ms.git}}
+\f1\fs28 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\partightenfactor0
+\cf0 \'a0Grafana: admin admin
+\f0\fs24 \kerning1\expnd0\expndtw0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+https://martinfowler.com/articles/microservices.html\
+microservices.io\
+	Patterns\
+	CQRS\
+Eventsourcing - GregYoung GOTO - YouTube\
+https://12factor.net/\
+Start.spring.io\
+https://docs.spring.io/spring-boot/appendix/application-properties/index.html\
+https://redis.io/glossary/domain-driven-design-ddd/\
+Resilience4j.readme.io/docs/getting-started-3\
+\
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b \cf3 \expnd0\expndtw0\kerning0
+package
+\f3\b0 \cf0  com.demo.spring;\
+\'a0\
+
+\f2\b \cf3 import
+\f3\b0 \cf0  org.slf4j.Logger;\
+
+\f2\b \cf3 import
+\f3\b0 \cf0  org.slf4j.LoggerFactory;\
+
+\f2\b \cf3 import
+\f3\b0 \cf0  org.springframework.boot.CommandLineRunner;\
+
+\f2\b \cf3 import
+\f3\b0 \cf0  org.springframework.stereotype.Component;\
+\'a0\
+@Component\
+
+\f2\b \cf3 public
+\f3\b0 \cf0  
+\f2\b \cf3 class
+\f3\b0 \cf0  MyTestRunner 
+\f2\b \cf3 implements
+\f3\b0 \cf0  CommandLineRunner\{\
+
+\f4 \uc0\u8195 \u8195 
+\f3 Logger logger=LoggerFactory.
+\f5\i getLogger
+\f3\i0 (MyTestRunner.
+\f2\b \cf3 class
+\f3\b0 \cf0 );\
+
+\f4 \uc0\u8195 \u8195 
+\f3 @Override\
+
+\f4 \uc0\u8195 \u8195 
+\f2\b \cf3 public
+\f3\b0 \cf0  
+\f2\b \cf3 void
+\f3\b0 \cf0  \cb4 run\cb1 (String... args) 
+\f2\b \cf3 throws
+\f3\b0 \cf0  Exception \{
+\f4 \uc0\u8195 \u8195 \u8195 \u8195 
+\f3 \
+
+\f4 \uc0\u8195 \u8195 \u8195 \u8195 
+\f3 logger.info("My First Application is up...");\
+
+\f4 \uc0\u8195 \u8195 
+\f3 \}\
+\}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0 \cf0 \kerning1\expnd0\expndtw0 \
+\pard\pardeftab720\partightenfactor0
+
+\f2\b \cf3 \expnd0\expndtw0\kerning0
+public
+\f3\b0 \cf0  
+\f2\b \cf3 class
+\f3\b0 \cf0  Inventory \{\
+
+\f4 \uc0\u8195 \u8195 
+\f2\b \cf3 private
+\f3\b0 \cf0  Long id;\
+
+\f4 \uc0\u8195 \u8195 
+\f2\b \cf3 private
+\f3\b0 \cf0  String productId;\
+
+\f4 \uc0\u8195 \u8195 
+\f2\b \cf3 private
+\f3\b0 \cf0  String productName;\
+
+\f4 \uc0\u8195 \u8195 
+\f2\b \cf3 private
+\f3\b0 \cf0  
+\f2\b \cf3 int
+\f3\b0 \cf0  stock;\
+
+\f4 \uc0\u8195 \u8195 
+\f2\b \cf3 private
+\f3\b0 \cf0  
+\f2\b \cf3 double
+\f3\b0 \cf0  price;\
+\}\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs28 \cf0 create database inventorydb;\
+use inventorydb\
+\'a0
+\f3\fs24 reate table inventory(\
+id BIGINT AUTO_INCREMENT primary key,\
+product_id varchar(20) unique not null,\
+product_name varchar(20) not null,\
+stock INT not null,\
+unit_price DOUBLE);\
+\
+spring.datasource.driver-class-name=\cf5 org.mariadb.jdbc.Driver\cf0 \
+spring.datasource.url=\cf5 jdbc:mariadb://localhost:3306/inventorydb\cf0 \
+spring.datasource.username=\cf5 root\cf0 \
+spring.datasource.password=\cf5 root\cf0 \
+
+\f0 \kerning1\expnd0\expndtw0 \
+\
+Actuator(a set of REST Endpoints, /health, /info\'85)\
+Localhost:8761\
+Localhost:8088/actuator/health\
+Localhost:8088/actuator/beans\
+Localhost:8088/actuator/mappings\
+\
+\
+Docker login\
+Docker logout\
+Docker run \'97rm \'97name greeter -p 8090:8080 -d xyzzy/greet-service:1.0\
+Docker inspect greeter\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f3 \cf0 \expnd0\expndtw0\kerning0
+docker build -t sbtalk71/greet-service:1.0 .\
+docker run --rm --name greeter -p 8090:8080 -d sbtalk71/greet-service:1.0\
+Docker tag raveesh/greet-service:1.0 raveeshrao/greet-service:1.0\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 Docker ps\
+Docker stop <1> <2> <3>\
+Docker container ls -a\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f6\fs22 \cf7 \kerning1\expnd0\expndtw0 \CocoaLigature0 az vm list-skus -l centralindia --size Standard_DS --all -o table\
+\pard\pardeftab720\partightenfactor0
+
+\f3\fs24 \cf0 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \outl0\strokewidth0 \strokec6 az aks get-credentials --resource-group demo-rg-shan --name shan-aks-01
+\f6\fs22 \cf7 \kerning1\expnd0\expndtw0 \CocoaLigature0 \outl0\strokewidth0 \
+
+\f3\fs24 \cf0 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \outl0\strokewidth0 \strokec6 kubectl create deployment greet-service --image=sbtalk71/greet-service:1.0 --port=8080 \'97replicas=2\outl0\strokewidth0 \
+\pard\pardeftab720\partightenfactor0
+
+\f0 \cf0 \kerning1\expnd0\expndtw0 Kubectl scale deployment greet-service \'97replicas=3\
+Kubectl  get pods \'97watch\
+Kubectl delete pod greet-service-675d856cdd-smkw2\
+\pard\pardeftab720\partightenfactor0
+
+\f3 \cf0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6 kubectl describe pod greet-service-758dfdd84f-l7m8d\
+Kubectl expose deployment greet-service \'97type=LoadBalancer \'97port=8181 \'97target-port=8080\
+Kubectl get svc\
+\
+Kubectl delete sec free-service\
+Kubectl get deployment greet-service -o yaml\
+Kubectl delete deployment greet-service\
+Kubectl apply -f deployment.yaml\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+\f0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+}
