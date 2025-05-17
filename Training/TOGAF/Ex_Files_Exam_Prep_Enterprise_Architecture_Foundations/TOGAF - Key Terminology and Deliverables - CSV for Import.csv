@@ -1,0 +1,99 @@
+﻿Term,Definition
+Application Architecture,A description of the structure and interaction of the applications as groups of capabilities that provide key business functions and manage the data assets.
+Architectural Style,The combination of distinctive features related to the specific context within which architecture is performed or expressed; a collection of principles and characteristics that steer or constrain how an architecture is formed.
+Architecture,"1. The fundamental concepts or properties of a system in its environment embodied in its elements, relationships, and in the principles of its design and evolution.
+2. The structure of components, their inter-relationships, and the principles and guidelines governing their design and evolution over time"
+Architecture Building Block (ABB),A constituent of the architecture model that describes a single aspect of the overall model.
+Architecture Continuum,A part of the Enterprise Continuum. A repository of architectural elements with increasing detail and specialization.
+Architecture Contract,"Agreements on deliverables, quality, and fitness-for-purpose that is entered into by development partners and sponsors."
+Architecture Development Method (ADM),"The core of the TOGAF framework. A multi-phase, iterative approach to develop and use an Enterprise Architecture to shape and govern business transformation and implementation projects."
+Architecture Domain,"The architectural area being considered. The TOGAF framework has four primary architecture domains within the TOGAF standard: Business, Data, Application, and Technology. Other domains may also be considered (e.g., Security)."
+Architecture Framework,"A conceptual structure used to plan, develop, implement, govern, and sustain an architecture."
+Architecture Governance,"The practice of monitoring and directing architecture-related work. The goal is to deliver desired outcomes and adhere to relevant principles, standards, and roadmaps."
+Architecture Principle,A qualitative statement of intent that should be met by the architecture.
+Architecture Principles,"General rules and guidelines that inform and support the way in which an organization sets about fulfilling its mission
+Guides values through actions to results"
+Architecture Repository,"A knowledgebase for all architecture-related projects
+Allows projects to manage their deliverables, locate re-useable assets, and publish outputs to stakeholders"
+Architecture Requirements Specification,"Quantitative statements that outline what a project must do in order to comply with the architecture defined
+Major component to an implementation contract"
+Architecture Roadmap,"Lists individual work packages that will realize the Target Architecture
+Includes timeline to show progression from baseline to target and highlights the value of the work package at each stage"
+Architecture View,A representation of a system from the perspective of a related set of concerns.
+Architecture Viewpoint,A specification of the conventions for a particular kind of architecture view.
+Architecture Vision,A succinct description of the Target Architecture that describes its business value and the changes to the enterprise that will result from its successful deployment. It serves as an aspirational vision and a boundary for detailed architecture development.
+Architecture Vision,"High-level summary of the changes that can be expected from the successful deployment of the Target Architecture
+Purpose is to agree at the beginning what the goals and outcomes should be
+Used as a communication tool to summarize benefits"
+Artifact,An architectural work product that describes an aspect of the architecture.
+Baseline,"A specification that has been formally reviewed and agreed upon, that thereafter serves as the basis for further development or change and that can be changed only through formal change control procedures or a type of procedure such as configuration management."
+BDAT (Business – Data – Application – Technology),A simple mnemonic to aid remembering the four architecture domains.
+Building Block,A (potentially re-usable) component of enterprise capability that can be combined with other building blocks to deliver architectures and solutions.
+Business Architecture,"A representation of holistic, multi-dimensional business views of: capabilities, end-to-end value delivery, information, and organizational structure; and the relationships among these business views and strategies, products, policies, initiatives, and stakeholders."
+Business Capability,A particular ability that a business may possess or exchange to achieve a specific purpose.
+Business Governance,Concerned with ensuring that the business processes and policies (and their operation) deliver the business outcomes and adhere to relevant business regulation.
+"Business Principles, Goals, and Drivers","Provide context for architecture work
+Describes needs and ways of working used by the organization"
+Capability,"An ability that an organization, person, or system possesses."
+Capability Assessment,"Helps to understand the baseline and target capability of the enterprise
+Examines capability level, maturity, architectural functions, and gaps
+Answers the tough questions on the implications, risks, barriers, and other considerations that should be addressed as part of the execution plan"
+Change Request,"A document submitted to modify current or future architecture work 
+
+Often used in response to learning new information, such as requirements not being suitable or sufficient"
+Communications Plan,"Targeted strategy of getting the right information, at the right time, and with the right level of detail to the right stakeholders
+Helps communication be carried out in a planned and managed process"
+Compliance Assessment,"A periodic review that is completed during implementation to ensure that the original Architecture Vision is appropriately realized
+Feedback becomes part of formal lessons learned, which improves future work"
+Concern,An interest in a system relevant to one or more of its stakeholders.
+Course of Action,"Direction and focus provided by strategic goals and objectives, often to deliver the value proposition characterized in the business model."
+Data Architecture,"A description of the structure and interaction of the enterprise’s major types and sources of data, logical data assets, physical data assets, and data management resources."
+Deliverable,"An architectural work product that is contractually specified and in turn formally reviewed, agreed, and signed off by the stakeholders."
+Enterprise,The highest level (typically) of description of an organization and typically covers all missions and functions. An enterprise will often span multiple organizations.
+Enterprise Continuum,"A categorization mechanism useful for classifying architecture and solution artifacts, both internal and external to the Architecture Repository, as they evolve from generic Foundation Architectures to Organization-Specific Architectures."
+Foundation Architecture,"Generic building blocks, their inter-relationships with other building blocks, combined with the principles and guidelines that provide a foundation on which more specific architectures can be built."
+Gap,"A statement of difference between two states. Used in the context of gap analysis, where the difference between the Baseline and Target Architecture is identified."
+Governance,"The discipline of monitoring, managing, and steering a business (or IS/IT landscape) to deliver the business outcome required."
+"Implementation and Migration Plan	","Schedule of projects and programs for implementation of the Target Architecture
+Also includes identifying the approach to change management"
+Implementation Governance Model,"Processes, organizations, roles, responsibilities, and measures that are defined to help with the journey from baseline to target architecture"
+Information,"Any communication or representation of facts, data, or opinions, in any medium or form, including textual, numerical, graphic, cartographic, narrative, or audio-visual."
+Information Technology (IT),"1. The lifecycle management of information and related technology used by an organization.
+3. A term commonly assigned to a department within an organization tasked with provisioning some or all of the domains described in (2) above.
+2. An umbrella term that includes all or some of the subject areas relating to the computer industry, such as Business Continuity, Business IT Interface, Business Process Modeling and Management, Communication, Compliance and Legislation, Computers, Content Management, Hardware, Information Management, Internet, Offshoring, Networking, Programming and Software, Professional Issues, Project Management, Security, Standards, Storage, Voice and Data Communications. Various countries and industries employ other umbrella terms to describe this same collection.
+4. Alternate names commonly adopted include Information Services, Information Management, etc."
+Logical (Architecture),"An implementation-independent definition of the architecture, often grouping related physical entities according to their purpose and structure; for example, the products from multiple infrastructure software vendors can all be logically grouped as Java® application server platforms."
+Metadata,"Data about data, of any sort in any media, that describes the characteristics of an entity."
+Metamodel,A model that describes how and with what the architecture will be described in a structured way.
+Method,"A defined, repeatable approach to address a particular type of problem."
+Modeling,"A technique through construction of models which enables a subject to be represented in a form that enables reasoning, insight, and clarity concerning the essence of the subject matter."
+Objective,"A time-bounded milestone for an organization used to demonstrate progress towards a goal; for example, “Increase Capacity Utilization by 30% by the end of 2019 to support the planned increase in market share”."
+Organizational Model for Enterprise Architecture,"A chart or document outlining the organization, roles, and responsibilities within the enterprise
+Defines the boundaries between different Enterprise Architecture practitioners and the governance relationships between them"
+Physical,"A description of a real-world entity. Physical elements in an Enterprise Architecture may still be considerably abstracted from Solution Architecture, design, or implementation views."
+Reference Model (RM),"A reference model is an abstract framework for understanding significant relationships among the entities of [an] environment, and for the development of consistent standards or specifications supporting that environment."
+Repository,"A system that manages all of the data of an enterprise, including data and process models and other enterprise information."
+Request for Architecture Work,"Triggers the beginning of an ADM cycle
+Sent directly by the Sponsor to the architecture organization"
+Requirement,A statement of need that must be met by a particular architecture or work package.
+Requirements Impact Assessment,Assesses the current architecture requirements and specification to identify changes that should be made and the implication of those changes when new information has been presented
+Segment Architecture,"A detailed, formal description of areas within an enterprise, used at the program or portfolio level to organize and align change activity."
+Service,"1. A repeatable activity; a discrete behavior that a building block may be requested or otherwise triggered to perform.
+2. An element of behavior that provides specific functionality in response to requests from actors or other services"
+Solution Architecture,A description of a discrete and focused business operation or activity and how IS/IT supports that operation.
+Solution Building Block,A candidate solution which conforms to an Architecture Building Block (ABB).
+Solutions Continuum,A part of the Enterprise Continuum. A repository of re-usable solutions for future implementation efforts. It contains implementations of the corresponding definitions in the Architecture Continuum.
+Stakeholder,"An individual, team, organization, or class thereof, having an interest in a system."
+Statement of Architecture Work,"Defines the scope and approach that will be used to complete an ADM cycle
+This statement will be used to determine if the project was a success"
+Strategic Architecture,"A summary formal description of the enterprise, providing an organizing framework for operational and change activity, and an executive-level, long-term view for direction setting."
+Tailored Architecture Framework,"A customized version of TOGAF and other reference frameworks that is highly suited to a specific organization
+Tailoring for enterprise integration – frameworks, terminology, presentation styles, selection, configuration, tool deployment, culture etc.
+Tailoring for specific project use – Selecting appropriate deliverables and artifacts to meet project and stakeholder needs"
+Target Architecture,The description of a future state of the architecture being developed for an organization.
+Technical Reference Model (TRM),A structure which allows the components of an information system to be described in a consistent manner.
+Technology Architecture,A description of the structure and interaction of the technology services and technology components.
+Transition Architecture,A formal description of one state of the architecture at an architecturally significant point in time.
+Value Stream,"A representation of an end-to-end collection of value-adding activities that create an overall result for a customer, stakeholder, or end user."
+Viewpoint Library,A collection of the specifications of architecture viewpoints contained in the Reference Library portion of the Architecture Repository.
+Work Package,"A set of actions identified to achieve one or more objectives for the business. A work package can be a part of a project, a complete project, or a program."
