@@ -1,0 +1,110 @@
+{
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "contentVersion": "1.0.0.0",
+        "triggers": {
+            "When_a_resource_event_occurs": {
+                "splitOn": "@triggerBody()",
+                "type": "ApiConnectionWebhook",
+                "inputs": {
+                    "body": {
+                        "properties": {
+                            "destination": {
+                                "endpointType": "webhook",
+                                "properties": {
+                                    "endpointUrl": "@{listCallbackUrl()}"
+                                }
+                            },
+                            "filter": {
+                                "includedEventTypes": [
+                                    "Microsoft.KeyVault.SecretExpired",
+                                    "Microsoft.KeyVault.SecretNearExpiry",
+                                    "Microsoft.KeyVault.SecretNewVersionCreated"
+                                ]
+                            },
+                            "topic": "/subscriptions/91ff1249-908a-4495-8cbe-10e10287181f/resourceGroups/tsh-secrets-mgmt-rg-prod-01/providers/Microsoft.KeyVault/vaults/tsh-sm-kvmnl-prd-01"
+                        }
+                    },
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['azureeventgrid_1']['connectionId']"
+                        }
+                    },
+                    "path": "/subscriptions/{topicSubscriptionId}/providers/@{encodeURIComponent('Microsoft.KeyVault.vaults')}/resource/eventSubscriptions",
+                    "queries": {
+                        "x-ms-api-version": "2017-09-15-preview"
+                    }
+                }
+            }
+        },
+        "actions": {
+            "Compose": {
+                "runAfter": {
+                    "Create_HTML_table": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Compose",
+                "inputs": "<style>\ntable {\n  border: 1px solid #FFFFFF;\n  background-color: #EEEEEE;\n  width: 100%;\n  text-align: left;\n  border-collapse: collapse;\n}\ntable td, table th {\n  border: 1px solid #FFFFFF;\n  padding: 3px 2px;\n}\ntable tbody td {\n  font-size: 13px;\n}\ntable thead {\n  background: #1973E7;\n  border-bottom: 2px solid #FFFFFF;\n}\ntable thead th {\n  font-size: 15px;\n  background: #1973E7;\n  font-weight: bold;\n  color: #FFFFFF;\n  border-left: 2px solid #FFFFFF;\n}\ntable thread tr:nth-child(even) {\n  background: #F2B411;\n}\n</style>\n\nHi Team, <br/>\nBelow Service Principal alert has been generated. Kindly review and perform necessary actions as required.<br/>\n<H2 style=\"color:#1973E7;font-family:Calibri\">Action Required: Review Activites </H2>\n<H3 style=\"color:#1973E7;font-family:Calibri\">Severity: Low </H3>\n<br/>\n@{body('Create_HTML_table')}\n<br/>\n<br/>\n<H4 style=\"font-family:Calibri;color:grey\">Note: This is an automated email, please do not reply. If you have any questions, drop an email to seginfo@ssspr.com.</H4>\n<br/>\nRegards,<br/>\nSecrets Monitoring Team | Security | Optum Connect"
+            },
+            "Create_HTML_table": {
+                "runAfter": {},
+                "type": "Table",
+                "inputs": {
+                    "format": "HTML",
+                    "from": [
+                        "@triggerBody()"
+                    ]
+                }
+            },
+            "Send_an_email_(V2)": {
+                "runAfter": {
+                    "Compose": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ApiConnection",
+                "inputs": {
+                    "body": {
+                        "Body": "<p>@{outputs('Compose')}</p>",
+                        "Cc": "freddie.hernandez@ssspr.com; manuel.serrano@ssspr.com; Ismail.Khan2@ssspr.com; ocharpreet@ssspr.com; deepak.dixit@ssspr.com; harpreet.singh@optum.com; deepakd@optum.com",
+                        "Importance": "Normal",
+                        "Subject": "Secrets Management | Application : @{triggerBody()?['subject']} | Secret Type : Manual Secret | Operation : KeyVault Event | Prod",
+                        "To": "seginfo@ssspr.com;"
+                    },
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['office365']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/v2/Mail"
+                }
+            }
+        },
+        "outputs": {},
+        "parameters": {
+            "$connections": {
+                "type": "Object",
+                "defaultValue": {}
+            }
+        }
+    },
+    "parameters": {
+        "$connections": {
+            "type": "Object",
+            "value": {
+                "azureeventgrid_1": {
+                    "id": "/subscriptions/91ff1249-908a-4495-8cbe-10e10287181f/providers/Microsoft.Web/locations/eastus/managedApis/azureeventgrid",
+                    "connectionId": "/subscriptions/91ff1249-908a-4495-8cbe-10e10287181f/resourceGroups/tsh-secrets-mgmt-rg-prod-01/providers/Microsoft.Web/connections/azureeventgrid",
+                    "connectionName": "azureeventgrid"
+                },
+                "office365": {
+                    "id": "/subscriptions/91ff1249-908a-4495-8cbe-10e10287181f/providers/Microsoft.Web/locations/eastus/managedApis/office365",
+                    "connectionId": "/subscriptions/91ff1249-908a-4495-8cbe-10e10287181f/resourceGroups/tsh-secrets-mgmt-rg-prod-01/providers/Microsoft.Web/connections/office365-1",
+                    "connectionName": "office365-1"
+                }
+            }
+        }
+    }
+}

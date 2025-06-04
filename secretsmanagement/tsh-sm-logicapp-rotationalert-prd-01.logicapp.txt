@@ -1,0 +1,160 @@
+{
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "contentVersion": "1.0.0.0",
+        "triggers": {
+            "manual": {
+                "type": "Request",
+                "kind": "Http",
+                "inputs": {
+                    "schema": {
+                        "properties": {
+                            "alerttype": {
+                                "type": "string"
+                            },
+                            "applicationname": {
+                                "type": "string"
+                            },
+                            "days": {
+                                "type": "string"
+                            },
+                            "environment": {
+                                "type": "string"
+                            },
+                            "expirydate": {
+                                "type": "string"
+                            },
+                            "owneremail": {
+                                "type": "string"
+                            },
+                            "ownername": {
+                                "type": "string"
+                            },
+                            "secrettype": {
+                                "type": "string"
+                            },
+                            "vaultname": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    }
+                }
+            }
+        },
+        "actions": {
+            "Compose": {
+                "runAfter": {},
+                "type": "Compose",
+                "inputs": "<br/>\nThis is to inform you that the application secret <b>\"@{triggerBody()?['applicationname']}\"</b> is going to expire in <b>\"@{triggerBody()?['days']}\"</b> days.\n<br/><br/>\n<b>Details:</b><br/>\n------------------------------------------------------------------------------<br/>\nSecret Name: @{triggerBody()?['applicationname']}<br/>\nSecret Type: @{triggerBody()?['secrettype']}<br/>\nDays Remainins: @{triggerBody()?['days']}<br/>\nExpiry Date: @{triggerBody()?['expirydate']}<br/>\nEnvironment: @{triggerBody()?['environment']}<br/>\nVault: @{triggerBody()?['vaultname']}<br/>\n------------------------------------------------------------------------------\n<br/>\n<br/>\n<H4 style=\"font-family:Calibri;color:grey\">Note: This is an automated email, please do not reply. If you have any questions, drop an email to seginfo@ssspr.com.</H4>\n<br/>\nRegards,<br/>\nSecrets Monitoring Team | Security | Optum Connect"
+            },
+            "Condition": {
+                "actions": {
+                    "Compose_2": {
+                        "runAfter": {},
+                        "type": "Compose",
+                        "inputs": "Hi Team,"
+                    },
+                    "Send_an_email_(V2)": {
+                        "runAfter": {
+                            "Compose_2": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection",
+                        "inputs": {
+                            "body": {
+                                "Body": "<p>@{outputs('Compose_2')}<br>\n<br>\n@{outputs('Compose')}</p>",
+                                "Cc": "freddie.hernadez@ssspr.com; manuel.serrano@ssspr.com; Ismail.Khan2@ssspr.com; ocharpreet@ssspr.com; deepak.dixit@ssspr.com; harpreet.singh@optum.com; deepakd@optum.com",
+                                "Importance": "Normal",
+                                "Subject": "Secrets Management | @{triggerBody()?['alerttype']} | Application :  @{triggerBody()?['applicationname']} | Secret Type : @{triggerBody()?['secrettype']} | Operation : Secret Expiry Notification | Expiry date: @{triggerBody()?['expirydate']} | Prod",
+                                "To": "seginfo@ssspr.com;"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['office365']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/v2/Mail"
+                        }
+                    }
+                },
+                "runAfter": {
+                    "Compose": [
+                        "Succeeded"
+                    ]
+                },
+                "else": {
+                    "actions": {
+                        "Compose_3": {
+                            "runAfter": {},
+                            "type": "Compose",
+                            "inputs": "Hi @{triggerBody()?['ownername']}/Team,"
+                        },
+                        "Send_an_email_(V2)_2": {
+                            "runAfter": {
+                                "Compose_3": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "type": "ApiConnection",
+                            "inputs": {
+                                "body": {
+                                    "Body": "<p>@{outputs('Compose_3')}<br>\n<br>\n@{outputs('Compose')}</p>",
+                                    "Cc": "freddie.hernadez@ssspr.com; manuel.serrano@ssspr.com; Ismail.Khan2@ssspr.com; ocharpreet@ssspr.com; deepak.dixit@ssspr.com; harpreet.singh@optum.com; deepakd@optum.com",
+                                    "Importance": "Normal",
+                                    "Subject": "Secrets Management | @{triggerBody()?['alerttype']} | Application :  @{triggerBody()?['applicationname']} | Secret Type : @{triggerBody()?['secrettype']} | Operation : Secret Expiry Notification | Expiry date: @{triggerBody()?['expirydate']} | Prod",
+                                    "To": "seginfo@ssspr.com; @{triggerBody()?['owneremail']}"
+                                },
+                                "host": {
+                                    "connection": {
+                                        "name": "@parameters('$connections')['office365']['connectionId']"
+                                    }
+                                },
+                                "method": "post",
+                                "path": "/v2/Mail"
+                            }
+                        }
+                    }
+                },
+                "expression": {
+                    "and": [
+                        {
+                            "equals": [
+                                "@length(triggerBody()?['ownername'])",
+                                0
+                            ]
+                        },
+                        {
+                            "equals": [
+                                "@length(triggerBody()?['ownername'])",
+                                "@true"
+                            ]
+                        }
+                    ]
+                },
+                "type": "If"
+            }
+        },
+        "outputs": {},
+        "parameters": {
+            "$connections": {
+                "type": "Object",
+                "defaultValue": {}
+            }
+        }
+    },
+    "parameters": {
+        "$connections": {
+            "type": "Object",
+            "value": {
+                "office365": {
+                    "id": "/subscriptions/91ff1249-908a-4495-8cbe-10e10287181f/providers/Microsoft.Web/locations/eastus/managedApis/office365",
+                    "connectionId": "/subscriptions/91ff1249-908a-4495-8cbe-10e10287181f/resourceGroups/tsh-secrets-mgmt-rg-prod-01/providers/Microsoft.Web/connections/office365-1",
+                    "connectionName": "office365-1"
+                }
+            }
+        }
+    }
+}

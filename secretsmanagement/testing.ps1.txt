@@ -1,0 +1,38 @@
+
+# Automation Runbook variables
+$TenantId = Get-AutomationVariable -Name "TenantID"
+$ApplicationId = Get-AutomationVariable -Name "ApplicationID"
+$SecuredPassword = Get-AutomationVariable -Name "SPSecret" | ConvertTo-SecureString -AsPlainText -Force
+$NonProdVaultName = Get-AutomationVariable -Name "AutomaticNonProdVaultName"
+$ProdVaultName = Get-AutomationVariable -Name "AutomaticProdVaultName"
+
+#Outputs
+$adstatus = ""
+$appstatus = ""
+$appowneraccess = "NA"
+$appsecretstatus = ""
+$appvaultstatus = ""
+$appvaultaccess = "NA"
+$maskedsecret = "NA"
+$operation = "Update"
+$secrettype = "Automatic"
+$emaillist = ""
+$comments = ""
+
+Enable-AzureRmAlias -Scope CurrentUser -ErrorAction SilentlyContinue
+"===================================================================================================="
+	"Connecting to Azure."
+    $Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $ApplicationId, $SecuredPassword
+    Connect-MgGraph -ClientSecretCredential $Credential -TenantId $TenantId -NoWelcome
+    Connect-AzAccount -ServicePrincipal -TenantId $TenantId -Credential $Credential
+
+    if ($adStatus -eq "") {
+        "Successfully Connected to Azure."
+        $adStatus = "Pass"
+
+        $NewOwner = @{
+            "@odata.id"= "https://graph.microsoft.com/v1.0/directoryObjects/{a6621c72-f258-4f5c-aa38-20167a6c8014}"
+        }
+
+        New-MgApplicationOwnerByRef -ApplicationId '9dc3121f-d5a2-4b1e-94f3-79610d9fd465' -BodyParameter $NewOwner
+    }

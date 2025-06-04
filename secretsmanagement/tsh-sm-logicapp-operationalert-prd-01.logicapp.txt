@@ -1,0 +1,111 @@
+{
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "contentVersion": "1.0.0.0",
+        "triggers": {
+            "manual": {
+                "type": "Request",
+                "kind": "Http",
+                "inputs": {
+                    "schema": {
+                        "properties": {
+                            "adstatus": {
+                                "type": "string"
+                            },
+                            "appname": {
+                                "type": "string"
+                            },
+                            "appowneraccess": {
+                                "type": "string"
+                            },
+                            "appsecretstatus": {
+                                "type": "string"
+                            },
+                            "appstatus": {
+                                "type": "string"
+                            },
+                            "appvaultaccess": {
+                                "type": "string"
+                            },
+                            "appvaultstatus": {
+                                "type": "string"
+                            },
+                            "comments": {
+                                "type": "string"
+                            },
+                            "maskedsecret": {
+                                "type": "string"
+                            },
+                            "operation": {
+                                "type": "string"
+                            },
+                            "owneremail": {
+                                "type": "string"
+                            },
+                            "secrettype": {
+                                "type": "string"
+                            },
+                            "tenantId": {
+                                "type": "string"
+                            },
+                            "vaultname": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    }
+                }
+            }
+        },
+        "actions": {
+            "Compose": {
+                "runAfter": {},
+                "type": "Compose",
+                "inputs": "<style>\ntable {\n  border: 1px solid #FFFFFF;\n  background-color: #EEEEEE;\n  width: 100%;\n  text-align: left;\n  border-collapse: collapse;\n}\ntable td, table th {\n  border: 1px solid #FFFFFF;\n  padding: 3px 2px;\n}\ntable tbody td {\n  font-size: 13px;\n}\ntable thead {\n  background: #1C6EA4;\n  border-bottom: 2px solid #FFFFFF;\n}\ntable thead th {\n  font-size: 15px;\n  background: #C25608;\n  font-weight: bold;\n  color: #FFFFFF;\n  border-left: 2px solid #FFFFFF;\n}\ntable thread tr:nth-child(even) {\n  background: #F2B411;\n}\n</style>\n\nHi Team, <br/>\nBelow Application action has occured. Kindly review and perform necessary actions if required.<br/>\n<H2 style=\"color:#1973E7;font-family:Calibri\">Action Required: Review Application @{triggerBody()?['operation']} </H2>\n<H3 style=\"color:#1973E7;font-family:Calibri\">Severity: Medium </H3>\n<br/>\n<table>\n<tr>\n<th bgcolor=\"#1973E7\" color=\"FFFFFF\">Tenant</th>\n<th bgcolor=\"#1973E7\" color=\"FFFFFF\">Vault</th>\n<th bgcolor=\"#1973E7\" color=\"FFFFFF\">AD Status</th>\n<th bgcolor=\"#1973E7\" color=\"FFFFFF\">App Name</th>\n<th bgcolor=\"#1973E7\" color=\"FFFFFF\">App Status</th>\n<th bgcolor=\"#1973E7\" color=\"FFFFFF\">App Owner Access</th>\n<th bgcolor=\"#1973E7\" color=\"FFFFFF\">App Secret Status</th>\n<th bgcolor=\"#1973E7\" color=\"FFFFFF\">Vault Status</th>\n<th bgcolor=\"#1973E7\" color=\"FFFFFF\">Vault Access</th>\n<th bgcolor=\"#1973E7\" color=\"FFFFFF\">Masked Secret</th>\n</tr>\n<tr>\n<td>@{triggerBody()?['tenantId']}</td>\n<td>@{triggerBody()?['vaultname']}</td>\n<td>@{triggerBody()?['adstatus']}</td>\n<td>@{triggerBody()?['appname']}</td>\n<td>@{triggerBody()?['appstatus']}</td>\n<td>@{triggerBody()?['appowneraccess']}</td>\n<td>@{triggerBody()?['appsecretstatus']}</td>\n<td>@{triggerBody()?['appvaultstatus']}</td>\n<td>@{triggerBody()?['appvaultaccess']}</td>\n<td>@{triggerBody()?['maskedsecret']}</td>\n</tr>\n</table>\n<br/>\n<H3 style=\"color:#1973E7;font-family:Calibri\">Execution Status: @{triggerBody()?['comments']} </H3>\n<br/>\n<br/>\n<H4 style=\"font-family:Calibri;color:grey\">Note: This is an automated email, please do not reply. If you have any questions, drop an email to seginfo@ssspr.com.</H4>\n<br/>\nRegards,<br/>\nSecrets Monitoring Team | Security | Optum Connect"
+            },
+            "Send_an_email_(V2)": {
+                "runAfter": {
+                    "Compose": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ApiConnection",
+                "inputs": {
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['office365']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "body": {
+                        "To": "seginfo@ssspr.com; @{triggerBody()?['owneremail']}",
+                        "Subject": "Secrets Management | Application :  @{triggerBody()?['appname']} | Secret Type : @{triggerBody()?['secrettype']} | Operation : @{triggerBody()?['operation']}  | Prod",
+                        "Body": "<p>@{outputs('Compose')}</p>",
+                        "Cc": "freddie.hernandez@ssspr.com; manuel.serrano@ssspr.com; Ismail.Khan2@ssspr.com; ocharpreet@ssspr.com; deepak.dixit@ssspr.com; harpreet.singh@optum.com; deepakd@optum.com; ismail.khan@optum.com",
+                        "Importance": "Normal"
+                    },
+                    "path": "/v2/Mail"
+                }
+            }
+        },
+        "outputs": {},
+        "parameters": {
+            "$connections": {
+                "type": "Object",
+                "defaultValue": {}
+            }
+        }
+    },
+    "parameters": {
+        "$connections": {
+            "type": "Object",
+            "value": {
+                "office365": {
+                    "id": "/subscriptions/91ff1249-908a-4495-8cbe-10e10287181f/providers/Microsoft.Web/locations/eastus/managedApis/office365",
+                    "connectionId": "/subscriptions/91ff1249-908a-4495-8cbe-10e10287181f/resourceGroups/tsh-secrets-mgmt-rg-prod-01/providers/Microsoft.Web/connections/office365-1",
+                    "connectionName": "office365-1"
+                }
+            }
+        }
+    }
+}
