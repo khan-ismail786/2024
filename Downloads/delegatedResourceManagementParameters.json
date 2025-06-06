@@ -1,0 +1,47 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "mspOfferName": {
+            "value": "Optum Connect Cloud"
+        },
+        "mspOfferDescription": {
+            "value": "Optum Connect Cloud"
+        },
+        "managedByTenantId": {
+            "value": "db05faca-c82a-4b9d-b9c5-0f64b6755421"
+        },
+        "authorizations": {
+            "value": [
+                { 
+                    "principalId": "3f484341-23af-42bc-a1ec-2c45b9b05e7f", 
+                    "roleDefinitionId": "b24988ac-6180-42a0-ab88-20f7382dd24c",
+                    "principalIdDisplayName": "azu_occ_lh_sp01_bhn"
+                },
+                { 
+                    "principalId": "3f484341-23af-42bc-a1ec-2c45b9b05e7f", 
+                    "roleDefinitionId": "fb1c8493-542b-48eb-b624-b4c8fea62acd",
+                    "principalIdDisplayName": "azu_occ_lh_sp01_bhn"
+                },
+                { 
+                    "principalId": "3f484341-23af-42bc-a1ec-2c45b9b05e7f", 
+                    "roleDefinitionId": "18d7d88d-d35e-4fb5-a5c3-7773c20a72d9",
+                    "principalIdDisplayName": "azu_occ_lh_sp01_bhn",
+                    "delegatedRoleDefinitionIds": [
+                        "b24988ac-6180-42a0-ab88-20f7382dd24c"
+                    ]
+                },
+                { 
+                    "principalId": "44359b54-0996-46ea-85cb-c4a65b1b8adf", 
+                    "roleDefinitionId": "acdd72a7-3385-48ef-bd42-f606fba81ae7",
+                    "principalIdDisplayName": "AZU_OCC_LH_RO"                    
+                },
+                { 
+                    "principalId": "79326d1a-f14a-49d6-b607-929d89b714d1", 
+                    "roleDefinitionId": "91c1777a-f3dc-4fae-b103-61d183457e46",
+                    "principalIdDisplayName": "AZU_OCC_LH_SERVICE_REGISTRATION"                    
+                }
+                ]
+                }                
+        }
+}
